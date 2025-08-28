@@ -14,6 +14,7 @@ object galvan {
     var sueldoACobrar = 0
     var deuda = 0   
     
+    method deuda() = deuda
     method sueldoEnMano() = sueldo
     method sueldoACobrar() = sueldoACobrar
     
@@ -21,7 +22,24 @@ object galvan {
         sueldoACobrar = monto
     }
     method cobrarSueldo() {
-        sueldo += sueldoACobrar
+        if (sueldoACobrar >= deuda) {
+            sueldo += sueldoACobrar - deuda
+            deuda = 0 
+        }
+        else {
+            deuda -= sueldoACobrar
+            }
+    }
+
+    method gastar(monto) {
+        if (sueldo >= monto) {
+            sueldo -= monto
+        }
+        else {
+            deuda += monto - sueldo
+            sueldo = 0
+        }
+        
     }
 }
 
