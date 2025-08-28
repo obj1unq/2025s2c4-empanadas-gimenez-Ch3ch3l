@@ -1,12 +1,12 @@
 //Escribir aqui los objetos
 object gimenez {
-    var Fondo = 300000
+    var fondo = 300000
 
-    method fondoActual() = Fondo
+    method fondoActual() = fondo
     method pagarSueldo(empleado){
         
+        fondo -= empleado.sueldoACobrar()
         empleado.cobrarSueldo()
-        Fondo -= empleado.sueldoEnMano()
     }
 }
 object galvan {
@@ -25,9 +25,11 @@ object galvan {
         if (sueldoACobrar >= deuda) {
             sueldo += sueldoACobrar - deuda
             deuda = 0 
+            sueldoACobrar = 0
         }
         else {
             deuda -= sueldoACobrar
+            sueldoACobrar = 0
             }
     }
 
@@ -59,5 +61,6 @@ object baigorria {
     method cobrarSueldo() {
         sueldo += sueldoACobrar
         empanadasVendidas = 0
+        sueldoACobrar = 0
     }
 }
